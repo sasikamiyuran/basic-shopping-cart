@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <form name="fShoppingCart" #f="ngForm" (ngSubmit)="saveShoppingItem(f)">
+          <div class="form-group">
+            <label for="itemName">Item Name</label>
+            <input type="text" name="itemName" id="itemName" ngModel class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="itemAmount">Amout</label>
+            <input type="number" name="itemAmount" id="itemAmount" ngModel class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="itemQuantity">Quantity</label>
+            <input type="number" name="itemQuantity" id="itemQuantity" ngModel class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="totalAmount">Total Amout</label>
+            <input type="number" name="totalAmount" id="totalAmount" ngModel class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="note">Note</label>
+            <input type="text" name="note" id="note" ngModel class="form-control">
+          </div>
+          <hr>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success btn-block">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Item Name</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total</th>
+              <th scope="col">Note</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of shoppingItems">
+              <th scope="row">{{item.itemId}}</th>
+              <td>{{item.itemName}}</td>
+              <td>{{item.itemAmount}}</td>
+              <td>{{item.itemQuantity}}</td>
+              <td>{{item.totalAmount}}</td>
+              <td>{{item.note}}</td>
+              <td><i class="far fa-trash-alt" style="color: red; cursor: pointer;" (click)="deleteShoppingItem(item.itemId)"></i></td>
+            </tr>
+            <tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
